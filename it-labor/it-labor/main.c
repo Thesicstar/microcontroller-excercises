@@ -7,6 +7,7 @@
 #define F_CPU 16000000UL
 #include <avr/io.h>
 #include <util/delay.h>
+#include <inttypes.h>
 
 
 
@@ -15,11 +16,18 @@ int main(void)
 	DDRA = 0xff;
 	PORTA = 0x00;
 	
-	PORTA |= 1<<4;
-	PORTA |= 1<<5;
+	uint8_t c1 = 0;
+	uint16_t c2 = 0;
+	
+	
 	
     while (1) 
     {
+		PORTA = c1;
+		c2++;
+		if(c2 == 65535) {
+			c1++;
+		}
 		
     }
 }
