@@ -13,12 +13,15 @@
 int main(void)
 {
 	DDRA = 0xff;
-	PORTA = 0b00000010;
-	_delay_ms(250);
-	PORTA |= 0b00000100;
+	PORTA = 0b0000001;
 	
     while (1) 
     {
+		for (int i = 0; i < 7; i++)
+		{
+			_delay_ms(250);
+			PORTA |= PORTA << 1;
+		}
     }
 }
 
