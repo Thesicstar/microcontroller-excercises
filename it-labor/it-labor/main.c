@@ -13,10 +13,10 @@
 
 int main(void)
 {
-	DDRA = 0xff;
+	DDRA = 0xFF;
 	DDRB = 0xFF;
-	PORTA = 0x00;
-	PORTB = 0x00;
+	PORTA = 0b00000001;
+	PORTB = 0b00000000;
 	
 	uint8_t d = 0;
 	
