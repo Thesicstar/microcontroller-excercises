@@ -14,21 +14,47 @@
 int main(void)
 {
 	DDRA = 0xff;
+	DDRB = 0xFF;
 	PORTA = 0x00;
+	PORTB = 0x00;
 	
-	uint8_t c1 = 0;
-	uint16_t c2 = 0;
+	uint8_t d = 0;
 	
 	
 	
     while (1) 
     {
-		PORTA = c1;
-		c2++;
-		if(c2 == 65535) {
-			c1++;
-		}
+		__delay_ms(100)
+		if (d == 0 && PORTA == 0b10000000) d = 1;
 		
+		if (d == 1 && PORTA == 0b00000001) {
+			PORTA = 0b00000000;
+			PORTB = 0b10000000;
+			continue;
+		}
+
+		if(d == 1 && PORTB = 0b01000000) d = 0;
+
+		if(d == 0 && PORTB == 0b10000000) {
+			PORTA = 0b00000001;
+			PORTB = 0b00000000;
+			continue;
+		}
+
+		if(PORTA != 0b00000000){
+			if (d == 0) {
+				PORTA << 1;
+			} else {
+				PORTA >> 1;
+			}
+		}
+		if(PORTB != 0b00000000){
+			if (d == 0) {
+				PORTB << 1;
+			} else {
+				PORTB >> 1;
+			}
+		}
     }
 }
 
